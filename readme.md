@@ -15,7 +15,7 @@ You can do it on api/server.js api/config/redis_dastabase.js
 node api/server
 ```
 
-## install the front-end
+## install the front-end dependencies
 ```
 cd app/public
 bower install
