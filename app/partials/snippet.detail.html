@@ -1,0 +1,74 @@
+<section class="snippet_detail">
+    <header class="snippet-header">
+        <a href="#/user/{{snippet.author.username}}"><img ng-src="{{snippet.author.avatar_url}}" height="38" weight="38"/></a>
+
+        <span class="snippet-title"><a href="#/snippet/{{snippet._id}}">{{snippet.title}}</a></span>
+        <div class="snippet-meta"><i class="fa fa-bullseye"></i>
+            <a href="#/user/{{snippet.author.username}}">{{snippet.author.username}}</a> Posted on {{snippet.created_at | date: 'medium'}}</div>
+        <span class="snippet-meta"><i class="fa fa-thumbs-up"></i> {{snippet.likes}}</span>
+        <span class="snippet-meta snippet-syntax"><i class="fa fa-pencil">{{snippet.syntax}}</i></span>
+        <span ng-if="isOwner">
+            <span><button ng-click="deleteSnippet(snippet.id)">删除</button></span>
+            <span><button ng-click="editSnippet(snippet.id)">修改</button></span>
+        </span>
+
+        <span ng-switch="isStarred">
+            <span ng-switch-when="false"><button ng-click="likeSnippet()">收藏</button></span>
+            <span ng-switch-when="true"><button ng-click="unlikeSnippet()">取消收藏</button></span>
+            <span ng-switch-default></span>
+        </span>
+
+
+        <!--<div class="snippet-meta">-->
+            <!--<ul class="list-inline">-->
+                <!--<i class="fa fa-tags">-->
+                    <!--<li ng-repeat="tag in snippet.tags">-->
+                        <!--<a class="label label-success" href="#/tag/{{tag}}">{{tag}}</a>-->
+                    <!--</li>-->
+                <!--</i>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div class="snippet-description">{{snippet.description}}</div>
+    </header>
+    <div hljs hljs-source="snippet.content"></div>
+
+    <!--<script>hljs.initHighlightingOnLoad();</script>-->
+    <!--<footer class="post-footer">-->
+        <!--<button ng-click="likePost()" class="btn btn-xs btn-success" ng-hide="isAlreadyLiked">Like</button>-->
+        <!--<button ng-click="unlikePost()" class="btn btn-xs btn-success" ng-show="isAlreadyLiked">Unlike</button>-->
+        <!--{{post.likes}} <i class="fa fa-thumbs-up"></i>-->
+    <!--</footer>-->
+</section>
+
+<div ng-if="edit">
+    <form>
+        <div class="form-group">
+            <h2>Title</h2>
+            <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="snippet.title">
+        </div>
+
+        <div class="form-group">
+            <label for="syntax">syntax</label>
+            <select ng-model="snippet.syntax" ng-options="syntax.name for syntax in syntaxs">
+            </select>
+        </div>
+
+        <div>
+            <h2>Description</h2>
+            <input type="text"  id="inputDescription" placeholder="description" ng-model="snippet.description">
+        </div>
+
+        <div>
+            <h2>Content</h2>
+            <textarea id="content_input" placeholder="paste or input your snippet here" rows="20" cols="100" id="textareaContent" ng-model="snippet.content"></textarea>
+        </div>
+
+        <div>
+            <h2>Tags</h2>
+            <input type="text" placeholder="Tags #1, Tags #2, ..." ng-model="snippet.tags">
+        </div>
+
+        <input type="submit" class="btn btn-success" ng-click="updateSnippet()" value="保存"/>
+        <input type="submit" ng-click="cancelEdit()", value="取消"/>
+    </form>
+</div>

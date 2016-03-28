@@ -1,0 +1,69 @@
+<section>
+    <a href="#/user/{{user.username}}"><img src="{{user.avatar_url}}" alt=""/></a>
+    <a href="#/user/{{user.username}}">{{user.username}}</a>
+    <br/>
+    <button ng-click="changeInfo('snippet')">snippet {{user.snippets_count}}</button>
+    <button ng-click="changeInfo('follower')">粉丝 {{user.followers_count}}</button>
+    <button ng-click="changeInfo('following')">关注 {{user.following_count}}</button>
+    <button ng-click="changeInfo('likes')">收藏 {{user.likes_count}}</button>
+    <span ng-if="!isyourself">
+        <span ng-switch="isfollowed">
+            <span ng-switch-when="false"><button ng-click="follow()">关注</button></span>
+            <span ng-switch-when="true"><button ng-click="unfollow()">取消关注</button></span>
+            <span ng-switch-default=""></span>
+        </span>
+
+    </span>
+</section>
+
+
+
+<section ng-switch="info">
+    <section ng-switch-when="snippet">
+        <section class="snippet" ng-repeat="snippet in snippets">
+            <header class="snippet-header">
+                <a href="#/user/{{snippet.author.username}}"><img ng-src="{{snippet.author.avatar_url}}" height="38" weight="38" /></a>
+                <span class="snippet-title"><a href="#/snippet/{{snippet._id}}">{{snippet.title}}</a></span>
+                <div class="snippet-meta"><i class="fa fa-bullseye"></i>Posted on {{snippet.created_at | date: 'medium'}}</div>
+                <span class="snippet-meta"><i class="fa fa-thumbs-up"></i> {{snippet.likes}}</span>
+                <span class="snippet-meta snippet-syntax"><i class="fa fa-pencil">{{snippet.syntax}}</i></span>
+                <div class="snippet-description">{{snippet.description}}</div>
+            </header>
+        </section>
+    </section>
+
+    <section ng-switch-when="follower">
+        <br/>
+        粉丝
+        <section class="user" ng-repeat="user in followers">
+            <a href="#/user/{{user.username}}"><img ng-src="{{user.avatar_url}}" height="38" weight="38" /></a>
+            <span class="user-name"><a href="#/user/{{user.username}}">{{user.username}}</a></span>
+        </section>
+    </section>
+
+    <section ng-switch-when="following">
+        <br/>
+        正在关注
+        <section class="user" ng-repeat="user in following">
+            <a href="#/user/{{user.username}}"><img ng-src="{{user.avatar_url}}" height="38" weight="38" /></a>
+            <span class="user-name"><a href="#/user/{{user.username}}">{{user.username}}</a></span>
+        </section>
+    </section>
+
+    <section ng-switch-default="likes">
+        <section class="snippet" ng-repeat="snippet in user.likes">
+            <header class="snippet-header">
+                <a href="#/user/{{snippet.author.username}}"><img ng-src="{{snippet.author.avatar_url}}" height="38" weight="38" /></a>
+                <span class="snippet-title"><a href="#/snippet/{{snippet._id}}">{{snippet.title}}</a></span>
+                <div class="snippet-meta"><i class="fa fa-bullseye"></i>
+                    <a href="#/user/{{snippet.author.username}}">{{snippet.author.username}}</a> Posted on {{snippet.created_at | date: 'medium'}}</div>
+                <span class="snippet-meta"><i class="fa fa-thumbs-up"></i> {{snippet.likes}}</span>
+                <span class="snippet-meta snippet-syntax"><i class="fa fa-pencil">{{snippet.syntax}}</i></span>
+
+
+                <div class="snippet-description">{{snippet.description}}</div>
+            </header>
+        </section>
+    </section>
+</section>
+

@@ -1,0 +1,21 @@
+<section class="snippet" ng-repeat="snippet in snippets">
+    <header class="snippet-header">
+        <a href="#/user/{{snippet.author.username}}"><img ng-src="{{snippet.author.avatar_url}}" height="38" weight="38" /></a>
+        <span class="snippet-title"><a href="#/snippet/{{snippet._id}}">{{snippet.title}}</a></span>
+        <div class="snippet-meta"><i class="fa fa-bullseye"></i>Posted on {{snippet.created_at | date: 'medium'}}</div>
+        <span class="snippet-meta"><i class="fa fa-thumbs-up"></i> {{snippet.likes}}</span>
+        <span class="snippet-meta snippet-syntax"><i class="fa fa-pencil">{{snippet.syntax}}</i></span>
+
+
+        <!--<div class="snippet-meta">-->
+            <!--<ul class="list-inline">-->
+                <!--<i class="fa fa-tags">-->
+                    <!--<li ng-repeat="tag in snippet.tags">-->
+                        <!--<a class="label label-success" href="#/tag/{{tag}}">{{tag}}</a>-->
+                    <!--</li>-->
+                <!--</i>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <div class="snippet-description">{{snippet.description}}</div>
+    </header>
+</section>

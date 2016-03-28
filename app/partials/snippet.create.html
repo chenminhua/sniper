@@ -1,0 +1,27 @@
+<section>
+
+    <form>
+        <div class="form-group">
+            <h2>Title</h2>
+            <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="snippet.title">
+        </div>
+        <div class="form-group">
+            <label for="syntax">syntax</label>
+            <select ng-model="snippet.syntax" ng-options="syntax.name for syntax in syntaxs">
+            </select>
+        </div>
+        <div>
+            <h2>Description</h2>
+            <input type="text"  id="inputDescription" placeholder="description" ng-model="snippet.description">
+        </div>
+        <div>
+            <h2>Content</h2>
+            <textarea id="content_input" placeholder="paste or input your snippet here" rows="20" cols="100" id="textareaContent" ng-model="snippet.content"></textarea>
+        </div>
+        <div>
+            <h2>Tags</h2>
+            <input type="text" class="form-control" id="inputTags" placeholder="Tags #1, Tags #2, ..." ng-model="snippet.tags">
+        </div>
+        <input type="submit" class="btn btn-success" ng-click="save(snippet, false)" value="保存"/>
+    </form>
+</section>

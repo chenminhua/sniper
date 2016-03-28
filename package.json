@@ -1,0 +1,31 @@
+{
+  "name": "sniper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@45.78.50.210:27195/home/git/sniper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-jwt": "^3.3.0",
+    "gravatar": "^1.4.0",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.7",
+    "morgan": "^1.7.0",
+    "redis": "^2.5.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <section class="about" id="greeting" style="background:black; ">
+        Hello, It's sniper!<br>
+        ...<br>
+        what is snippet?<br>
+        sniper is a snippet manager<br>
+        ...<br>
+        Do you want to help or kick author's ass?<br>
+        The project is here: http://github.com/chenminhua/sniper<br>
+        You can also find me by the following methods<br>
+        email: chenmh@shanghaitech.edu.cn<br>
+        blog: blog.chenminhua.com<br>
+        weibo: weibo.com/chenminhua91<br>
+        twitter: bigtomiscmh<br>
+        ...<br>
+        what can we do in snipper?<br>
+        you can put your code snippet in your sniper account<br>
+        you can follow the person you interested in<br>
+        you can `like` others' snippet<br>
+        you can learn<br>
+        you can help<br>
+        you can be a better programmer<br>
+        ...<br>
+        What about the stack?<br>
+        restful api: express(nodejs)<br>
+        database: mongodb<br>
+        auth: jwt with redis<br>
+        front-end: angularjs<br>
+        front-end server: http-server + nginx<br>
+        ...<br>
+        who made this?<br>
+        My name is Minhua Chen<br>
+        In chinese, 陈敏华<br>
+        I made this project because I want to learn about angularjs<br>
+        But I'm not a good front-end developper ^_^<br>
+        So, sorry about the UI<br>
+        And, this project still have some bugs<br>
+        I don't have too much tiime to solve all of them.<br>
+        If you want help, just send me pull request<br>
+        Peace ^_^<br>
+    </section>
+    <script src="../public/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#greeting').typewriter()
+        });
+        (function($) {
+            $.fn.typewriter = function() {
+                console.log("test")
+                this.each(function() {
+                    var $ele = $(this), str = $ele.html(), progress = 0;
+                    $ele.html('');
+                    var timer = setInterval(function() {
+                        var current = str.substr(progress, 1);
+                        if (current == '<') {
+                            progress = str.indexOf('>', progress) + 1;
+                        } else {
+                            progress++;
+                        }
+                        $ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+                        if (progress >= str.length) {
+                            clearInterval(timer);
+                        }
+                    }, 80);
+                });
+                return this;
+            };
+        })(jQuery);
+    </script>
+</body>
+</html>
